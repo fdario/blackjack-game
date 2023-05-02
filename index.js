@@ -21,7 +21,7 @@ function drawCard() {
     res.innerHTML = '';
     value.push(cards[Math.floor((Math.random() * cards.length))]);
     if (soma < 21) {
-        res.innerHTML = `Cartas: ${value} Valor: ${verifyValue()}`;
+        res.innerHTML = `Cartas: ${value} <br> Valor: ${verifyValue()}`;
         if (position == 0) {
             soma = value[0];
         } else {

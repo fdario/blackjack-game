@@ -1,3 +1,15 @@
+@keyframes appaear {
+    0% {
+
+    } 
+    50%{
+
+    }
+    100%{
+        
+    }
+}
+
 body {
     font-family: 'Heveltica', sans-serif;
     text-align: center;
