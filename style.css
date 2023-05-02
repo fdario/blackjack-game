@@ -1,24 +1,45 @@
 body {
     font-family: 'Heveltica', sans-serif;
-    
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
+
 ul {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     padding: 0;
+    list-style-type: none;
 }
+
 table {
+    margin: 2vh 0;
+    table-layout: auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0px 10px;
     text-align: center;
 }
-th {
-    padding: 10px 0;
-    letter-spacing: 1px;
+
+
+#container {
+   border: 1px solid black;
+   border-radius: 5px;
+   padding: 2%;
+   width: 35%;
+   height: 40%;
 }
-#container{
-    text-align: center;
+
+.result {
+    font-size: 7vh;
 }
-#res{
-    margin: 15px ;
+
+#res {
+    margin: 15px;
 }

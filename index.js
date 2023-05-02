@@ -1,55 +1,65 @@
-const button = document.getElementById('pegar-carta');
-button.addEventListener('click', drawCard);
-const res = document.getElementById('res');
-
 const cards = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
 const value = [];
 
 let soma = 0;
 let position = 0;
 
+const button = document.getElementById('pegar-carta');
+button.addEventListener('click', drawCard);
+const res = document.getElementById('res');
+
+const reloadButton = document.createElement('button');
+reloadButton.textContent = `Reiniciar`;
+reloadButton.addEventListener('click', reloadPage);
+
+const result = document.createElement('p');
+
+const reloadInstruction = document.createElement('p');
+reloadInstruction.textContent = `Clique em 'Reiniciar' para jogar de novo.`;
+
 function drawCard() {
-    if (soma > 21) {
-        res.innerHTML = '';
-        
-        let resultLoser = document.createElement('p');
-        resultLoser.textContent = `Você estourou! Clique em 'Reiniciar' para jogar de novo.`;
-
-        let reloadButton = document.createElement('button');
-        reloadButton.textContent = `Reiniciar`;
-        reloadButton.addEventListener('click', reloadPage);
-
-        res.appendChild(resultLoser);
-        res.appendChild(reloadButton);
-
-    } else if (soma == 21) {
-        res.innerHTML = '';
-
-        let resultWinner = document.createElement('p');
-        resultWinner.textContent = `Você ganhou! Clique em 'Reiniciar' para jogar de novo.`;
-
-        let reloadButton = document.createElement('button');
-        reloadButton.textContent = `Reiniciar`;
-        reloadButton.addEventListener('click', reloadPage);
-
-        res.appendChild(resultWinner);
-        res.appendChild(reloadButton);
-
-    } else {
+    res.innerHTML = '';
     value.push(cards[Math.floor((Math.random() * cards.length))]);
-        res.innerHTML = `${verifyValue()}`;
+    if (soma < 21) {
+        res.innerHTML = `Cartas: ${value} Valor: ${verifyValue()}`;
         if (position == 0) {
             soma = value[0];
         } else {
             soma += verifyValue()[position];
         }
         position++;
-        let result = document.createElement('p');
-        result.textContent = `Total de cartas: ${soma}`;
 
+        result.textContent = `Total de cartas: ${soma}`;
         res.appendChild(result);
     }
+    if (soma == 21) {
+        button.remove();
+        res.innerHTML = '';
+
+        let resultWinner = document.createElement('p');
+        resultWinner.classList.add("result");
+        resultWinner.textContent = `Você ganhou!`;
+
+        res.appendChild(result);
+        res.appendChild(resultWinner);
+        res.appendChild(reloadInstruction);
+        res.appendChild(reloadButton);
+    }
+    if (soma > 21) {
+        button.remove();
+        res.innerHTML = '';
+
+        let resultLoser = document.createElement('p');
+        resultLoser.classList.add("result");
+        resultLoser.textContent = `Você estourou!`;
+
+        res.appendChild(result);
+        res.appendChild(resultLoser);
+        res.appendChild(reloadInstruction);
+        res.appendChild(reloadButton);
+    }
 }
+
 
 function verifyValue() {
     if (value[0] == 'A') {
