@@ -78,7 +78,10 @@ button {
     animation-name: appaear;
     animation-duration:  2s;
 }
-.disappaear {
-    animation-name: disappaear;
-    animation-duration:  5s;
+
+@media (min-width: 540px) {
+    #container {
+        width: 75%;
+        height: 95%;
+    }
 }

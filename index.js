@@ -1,12 +1,12 @@
 const cards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 const suits = ['Espadas', 'Copas', 'Paus', 'Ouros']
+let separacao = [' de '];
 const value = [];
 const suitsValue = [];
 const fullCards = [];
 
 let soma = 0;
 let position = 0;
-let separacao = [' de '];
 
 const button = document.getElementById('pegar-carta');
 button.addEventListener('click', drawCard);
