@@ -1,12 +1,20 @@
 @keyframes appaear {
     0% {
-
-    } 
-    50%{
-
+        color: #00000000;
     }
-    100%{
-        
+    50% {
+        color: #000000;
+    }
+    100% {
+        color: #000000; 
+    }
+}
+@keyframes disappaear {
+    0% {
+        color: #000000; 
+    }
+    100% {
+        color: #00000000;
     }
 }
 
@@ -41,11 +49,11 @@ td {
 
 
 #container {
-   border: 1px solid black;
-   border-radius: 5px;
-   padding: 2%;
-   width: 35%;
-   height: 40%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2%;
+    width: 35%;
+    height: 40%;
 }
 
 .result {
@@ -54,4 +62,12 @@ td {
 
 #res {
     margin: 15px;
+}
+.appaear {
+    animation-name: appaear;
+    animation-duration:  1s;
+}
+.disappaear {
+    animation-name: disappaear;
+    animation-duration:  1s;
 }

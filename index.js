@@ -18,6 +18,7 @@ const reloadInstruction = document.createElement('p');
 reloadInstruction.textContent = `Clique em 'Reiniciar' para jogar de novo.`;
 
 function drawCard() {
+    setInterval(res.classList.add('appaear'), 2000);
     res.innerHTML = '';
     value.push(cards[Math.floor((Math.random() * cards.length))]);
     if (soma < 21) {
