@@ -28,13 +28,12 @@ function drawCard() {
     value.push(cards[Math.floor((Math.random() * cards.length))]);
     suitsValue.push(suits[Math.floor((Math.random() * suits.length))]);
 
-    fullCards.push(value[position].toString().concat(separacao,suitsValue[position]));
+    fullCards.push(value[position].toString().concat(separacao, suitsValue[position]));
 
     let unorderedListOfCards = document.createElement('ul');
     let listItemOfCards = document.createElement('li');
-    console.log(fullCards);
     res.innerHTML = `<p>Carta: ${fullCards[position]}</p><p>Valor: ${verifyValue()}</p>`;
-    
+
     if (soma < 21) {
         if (position == 0) {
             soma = value[0];
@@ -44,16 +43,16 @@ function drawCard() {
         position++;
 
         result.textContent = `Total de cartas: ${soma}`;
-        
+
         listItemOfCards.innerHTML = `Lista de cartas:`;
         unorderedListOfCards.appendChild(listItemOfCards);
 
         for (let i = 1; i <= fullCards.length; i++) {
             let cardsForTheList = document.createElement('li');
-            cardsForTheList.textContent = `${fullCards[i-1]}`;
+            cardsForTheList.textContent = `${fullCards[i - 1]}`;
             unorderedListOfCards.appendChild(cardsForTheList);
         }
-        
+
         res.appendChild(result);
         res.appendChild(unorderedListOfCards);
     }
@@ -61,7 +60,7 @@ function drawCard() {
         button.remove();
 
         let resultWinner = document.createElement('p');
-        resultWinner.classList.add("result");        
+        resultWinner.classList.add("result");
         resultWinner.classList.add("win");
         resultWinner.textContent = `Você ganhou!`;
 
@@ -73,7 +72,7 @@ function drawCard() {
         button.remove();
 
         let resultLoser = document.createElement('p');
-        resultLoser.classList.add("result");      
+        resultLoser.classList.add("result");
         resultLoser.classList.add("lose");
         resultLoser.textContent = `Você Perdeu!`;
 
@@ -86,32 +85,20 @@ function drawCard() {
 
 function verifyValue() {
     if (value[0] == 'A') {
-        value.shift();
-        value.unshift(11);
+        value.pop();
+        value.push(11);
     }
     if (value[position] == 'A') {
         value.pop();
         value.push(1);
     }
-    if (value[0] == 'J') {
-        value.shift();
-        value.unshift(11);
-    }
     if (value[position] == 'J') {
         value.pop();
         value.push(11);
     }
-    if (value[0] == 'Q') {
-        value.shift();
-        value.unshift(12);
-    }
     if (value[position] == 'Q') {
         value.pop();
         value.push(12);
-    }
-    if (value[0] == 'K') {
-        value.shift();
-        value.unshift(13);
     }
     if (value[position] == 'K') {
         value.pop();
