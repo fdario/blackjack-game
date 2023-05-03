@@ -1,4 +1,4 @@
-const cards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+const cards = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
 const suits = ['Espadas', 'Copas', 'Paus', 'Ouros']
 let separacao = [' de '];
 const value = [];
@@ -28,28 +28,34 @@ function drawCard() {
     value.push(cards[Math.floor((Math.random() * cards.length))]);
     suitsValue.push(suits[Math.floor((Math.random() * suits.length))]);
 
-    fullCards.push(value[position].concat(separacao,suitsValue[position]));
+    fullCards.push(value[position].toString().concat(separacao,suitsValue[position]));
 
     let unorderedListOfCards = document.createElement('ul');
     let listItemOfCards = document.createElement('li');
-    
-    res.innerHTML = `Carta: ${value} <br> Valor: ${verifyValue()}`;
+    console.log(fullCards);
+    res.innerHTML = `<p>Carta: ${fullCards[position]}</p><p>Valor: ${verifyValue()}</p>`;
     
     if (soma < 21) {
         if (position == 0) {
-            soma = Number(value[0]);
+            soma = value[0];
         } else {
-            soma += Number(verifyValue()[position]);
+            soma += verifyValue()[position];
         }
         position++;
 
         result.textContent = `Total de cartas: ${soma}`;
         
-        listItemOfCards.innerHTML = `Lista de cartas: ${fullCards}`;
+        listItemOfCards.innerHTML = `Lista de cartas:`;
         unorderedListOfCards.appendChild(listItemOfCards);
+
+        for (let i = 1; i <= fullCards.length; i++) {
+            let cardsForTheList = document.createElement('li');
+            cardsForTheList.textContent = `${fullCards[i-1]}`;
+            unorderedListOfCards.appendChild(cardsForTheList);
+        }
         
-        res.appendChild(unorderedListOfCards);
         res.appendChild(result);
+        res.appendChild(unorderedListOfCards);
     }
     if (soma == 21) {
         button.remove();
@@ -59,7 +65,6 @@ function drawCard() {
         resultWinner.classList.add("win");
         resultWinner.textContent = `Você ganhou!`;
 
-        res.appendChild(result);
         res.appendChild(resultWinner);
         res.appendChild(reloadInstruction);
         res.appendChild(reloadButton);
@@ -68,11 +73,10 @@ function drawCard() {
         button.remove();
 
         let resultLoser = document.createElement('p');
-        resultLoser.classList.add("result")        
-        resultLoser.classList.add("lose");;
+        resultLoser.classList.add("result");      
+        resultLoser.classList.add("lose");
         resultLoser.textContent = `Você Perdeu!`;
 
-        res.appendChild(result);
         res.appendChild(resultLoser);
         res.appendChild(reloadInstruction);
         res.appendChild(reloadButton);
