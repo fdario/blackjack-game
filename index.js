@@ -1,10 +1,12 @@
-const cards = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
+const cards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 const suits = ['Espadas', 'Copas', 'Paus', 'Ouros']
 const value = [];
 const suitsValue = [];
+const fullCards = [];
 
 let soma = 0;
 let position = 0;
+let separacao = [' de '];
 
 const button = document.getElementById('pegar-carta');
 button.addEventListener('click', drawCard);
@@ -25,17 +27,28 @@ function drawCard() {
 
     value.push(cards[Math.floor((Math.random() * cards.length))]);
     suitsValue.push(suits[Math.floor((Math.random() * suits.length))]);
-    console.log(suitsValue, position);
+
+    fullCards.push(value[position].concat(separacao,suitsValue[position]));
+
+    let unorderedListOfCards = document.createElement('ul');
+    let listItemOfCards = document.createElement('li');
+    
+    res.innerHTML = `Carta: ${value} <br> Valor: ${verifyValue()}`;
+    
     if (soma < 21) {
-        res.innerHTML = `Carta: ${value[position]} de ${suitsValue[position]} <br> Valor: ${verifyValue()}`;
         if (position == 0) {
-            soma = value[0];
+            soma = Number(value[0]);
         } else {
-            soma += verifyValue()[position];
+            soma += Number(verifyValue()[position]);
         }
         position++;
 
         result.textContent = `Total de cartas: ${soma}`;
+        
+        listItemOfCards.innerHTML = `Lista de cartas: ${fullCards}`;
+        unorderedListOfCards.appendChild(listItemOfCards);
+        
+        res.appendChild(unorderedListOfCards);
         res.appendChild(result);
     }
     if (soma == 21) {
@@ -55,7 +68,7 @@ function drawCard() {
 
         let resultLoser = document.createElement('p');
         resultLoser.classList.add("result");
-        resultLoser.textContent = `Você estourou!`;
+        resultLoser.textContent = `Você Perdeu!`;
 
         res.appendChild(result);
         res.appendChild(resultLoser);
