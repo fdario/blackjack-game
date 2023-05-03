@@ -2,17 +2,21 @@
     0% {
         color: #00000000;
     }
+
     50% {
         color: #000000;
     }
+
     100% {
-        color: #000000; 
+        color: #000000;
     }
 }
+
 @keyframes disappaear {
     0% {
-        color: #000000; 
+        color: #000000;
     }
+
     100% {
         color: #00000000;
     }
@@ -71,17 +75,48 @@ button {
     font-size: 7vh;
 }
 
+.lose {
+    font-size: 7vh;
+    color: red;
+}
+
+.win {
+    font-size: 7vh;
+    color: green;
+}
+
 #res {
     margin: 15px;
 }
+
 .appaear {
     animation-name: appaear;
-    animation-duration:  2s;
+    animation-duration: 2s;
 }
 
-@media (min-width: 540px) {
+@media (max-width: 603px) {
+    body {
+        height: 99vh;
+    }
+
     #container {
-        width: 75%;
-        height: 95%;
+        width: 80%;
+        height: 99%;
+    }
+
+    #res {
+        margin: 2vh 0%;
+    }
+
+    table {
+        margin: 2vh 0;
+        text-align: center;
+    }
+
+    th,
+    td {
+        padding: 0px 0px;
+        text-align: center;
+        font-size: 0.8em;
     }
 }

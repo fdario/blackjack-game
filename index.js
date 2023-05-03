@@ -55,7 +55,8 @@ function drawCard() {
         button.remove();
 
         let resultWinner = document.createElement('p');
-        resultWinner.classList.add("result");
+        resultWinner.classList.add("result");        
+        resultWinner.classList.add("win");
         resultWinner.textContent = `Você ganhou!`;
 
         res.appendChild(result);
@@ -67,7 +68,8 @@ function drawCard() {
         button.remove();
 
         let resultLoser = document.createElement('p');
-        resultLoser.classList.add("result");
+        resultLoser.classList.add("result")        
+        resultLoser.classList.add("lose");;
         resultLoser.textContent = `Você Perdeu!`;
 
         res.appendChild(result);
