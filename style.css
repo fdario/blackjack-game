@@ -19,6 +19,9 @@
 }
 
 body {
+    background-image: linear-gradient(45deg, #3b0000, #00155a, #5c4e01);
+    background-repeat: no-repeat;
+    height: 100vh;
     font-family: 'Heveltica', sans-serif;
     text-align: center;
     display: flex;
@@ -47,13 +50,13 @@ td {
     text-align: center;
 }
 
-
 #container {
+    background-color: #fff;
     border: 1px solid black;
     border-radius: 5px;
     padding: 2%;
     width: 35%;
-    height: 40%;
+    height: 70vh;
 }
 
 .result {
@@ -65,9 +68,9 @@ td {
 }
 .appaear {
     animation-name: appaear;
-    animation-duration:  1s;
+    animation-duration:  2s;
 }
 .disappaear {
     animation-name: disappaear;
-    animation-duration:  1s;
+    animation-duration:  5s;
 }

@@ -1,5 +1,7 @@
 const cards = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
+const suits = ['Espadas', 'Copas', 'Paus', 'Ouros']
 const value = [];
+const suitsValue = [];
 
 let soma = 0;
 let position = 0;
@@ -18,11 +20,14 @@ const reloadInstruction = document.createElement('p');
 reloadInstruction.textContent = `Clique em 'Reiniciar' para jogar de novo.`;
 
 function drawCard() {
-    setInterval(res.classList.add('appaear'), 2000);
     res.innerHTML = '';
+    res.classList.add('appaear');
+
     value.push(cards[Math.floor((Math.random() * cards.length))]);
+    suitsValue.push(suits[Math.floor((Math.random() * suits.length))]);
+    console.log(suitsValue, position);
     if (soma < 21) {
-        res.innerHTML = `Cartas: ${value} <br> Valor: ${verifyValue()}`;
+        res.innerHTML = `Carta: ${value[position]} de ${suitsValue[position]} <br> Valor: ${verifyValue()}`;
         if (position == 0) {
             soma = value[0];
         } else {
@@ -35,7 +40,6 @@ function drawCard() {
     }
     if (soma == 21) {
         button.remove();
-        res.innerHTML = '';
 
         let resultWinner = document.createElement('p');
         resultWinner.classList.add("result");
@@ -48,7 +52,6 @@ function drawCard() {
     }
     if (soma > 21) {
         button.remove();
-        res.innerHTML = '';
 
         let resultLoser = document.createElement('p');
         resultLoser.classList.add("result");
