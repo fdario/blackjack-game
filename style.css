@@ -12,19 +12,10 @@
     }
 }
 
-@keyframes disappaear {
-    0% {
-        color: #000000;
-    }
-
-    100% {
-        color: #00000000;
-    }
-}
-
 body {
-    background: linear-gradient(45deg, #5a4d00, #00115e, #880000);
-    height: 97.4vh;
+    background-image: linear-gradient(45deg, #5a4d00, #00115e, #880000);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: 'Heveltica', sans-serif;
     text-align: center;
     display: flex;
@@ -32,10 +23,6 @@ body {
 }
 
 ul {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
     padding: 0;
     list-style-type: none;
 }

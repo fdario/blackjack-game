@@ -1,6 +1,6 @@
 const cards = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
-const suits = ['Espadas', 'Copas', 'Paus', 'Ouros']
-let separacao = [' de '];
+const suits = ['Espadas', 'Copas', 'Paus', 'Ouros'];
+const separacao = [' de '];
 const value = [];
 const suitsValue = [];
 const fullCards = [];
@@ -40,6 +40,7 @@ function drawCard() {
         } else {
             soma += verifyValue()[position];
         }
+
         position++;
 
         result.textContent = `Total de cartas: ${soma}`;
@@ -82,27 +83,34 @@ function drawCard() {
     }
 }
 
-
 function verifyValue() {
     if (value[0] == 'A') {
-        value.pop();
-        value.push(11);
+        let aceConfirm = window.prompt('O Ás nessa posição pode valer 1 ou 11. Qual você deseja? Digite apenas o número');
+        if (aceConfirm == 1) {
+            value.pop();
+            value.push(1);
+        } else {
+            value.pop();
+            value.push(11);
+        }
     }
-    if (value[position] == 'A') {
-        value.pop();
-        value.push(1);
-    }
-    if (value[position] == 'J') {
-        value.pop();
-        value.push(11);
-    }
-    if (value[position] == 'Q') {
-        value.pop();
-        value.push(12);
-    }
-    if (value[position] == 'K') {
-        value.pop();
-        value.push(13);
+    switch (value[position]) {
+        case 'A':
+            value.pop();
+            value.push(1);
+            break;
+        case 'J':
+            value.pop();
+            value.push(11);
+            break;
+        case 'Q':
+            value.pop();
+            value.push(12);
+            break;
+        case 'K':
+            value.pop();
+            value.push(13);
+            break;
     }
     return value;
 }
