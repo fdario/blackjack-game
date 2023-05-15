@@ -62,12 +62,10 @@ button {
 }
 
 .lose {
-    font-size: 7vh;
     color: red;
 }
 
 .win {
-    font-size: 7vh;
     color: green;
 }
 

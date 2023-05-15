@@ -1,6 +1,5 @@
 const cards = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
-const suits = ['Espadas', 'Copas', 'Paus', 'Ouros'];
-const separacao = [' de '];
+const suitsName = [' de Espadas', ' de Copas', ' de Paus', ' de Ouros'];
 const value = [];
 const suitsValue = [];
 const fullCards = [];
@@ -10,6 +9,7 @@ let position = 0;
 
 const button = document.getElementById('pegar-carta');
 button.addEventListener('click', drawCard);
+
 const res = document.getElementById('res');
 
 const reloadButton = document.createElement('button');
@@ -23,15 +23,19 @@ reloadInstruction.textContent = `Clique em 'Reiniciar' para jogar de novo.`;
 
 function drawCard() {
     res.innerHTML = '';
+
     res.classList.add('appaear');
 
     value.push(cards[Math.floor((Math.random() * cards.length))]);
-    suitsValue.push(suits[Math.floor((Math.random() * suits.length))]);
 
-    fullCards.push(value[position].toString().concat(separacao, suitsValue[position]));
+    suitsValue.push(suitsName[Math.floor((Math.random() * suitsName.length))]);
+
+    fullCards.push(value[position].toString().concat(suitsValue[position]));
 
     let unorderedListOfCards = document.createElement('ul');
+
     let listItemOfCards = document.createElement('li');
+
     res.innerHTML = `<p>Carta: ${fullCards[position]}</p><p>Valor: ${verifyValue()}</p>`;
 
     if (soma < 21) {
@@ -58,6 +62,8 @@ function drawCard() {
         res.appendChild(unorderedListOfCards);
     }
     if (soma == 21) {
+        res.innerHTML = '';
+
         button.remove();
 
         let resultWinner = document.createElement('p');
@@ -65,11 +71,15 @@ function drawCard() {
         resultWinner.classList.add("win");
         resultWinner.textContent = `Você ganhou!`;
 
+        res.appendChild(result);
         res.appendChild(resultWinner);
+        res.appendChild(unorderedListOfCards);
         res.appendChild(reloadInstruction);
         res.appendChild(reloadButton);
     }
     if (soma > 21) {
+        res.innerHTML = '';
+
         button.remove();
 
         let resultLoser = document.createElement('p');
@@ -77,7 +87,9 @@ function drawCard() {
         resultLoser.classList.add("lose");
         resultLoser.textContent = `Você Perdeu!`;
 
+        res.appendChild(result);
         res.appendChild(resultLoser);
+        res.appendChild(unorderedListOfCards);
         res.appendChild(reloadInstruction);
         res.appendChild(reloadButton);
     }
